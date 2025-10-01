@@ -1,6 +1,5 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Calendar, Eye } from "lucide-react";
 
 type DietChartCardProps = {
@@ -24,11 +23,6 @@ export default function DietChartCard({ id, title, date, meals, dosha, onView }:
               {date}
             </CardDescription>
           </div>
-          {dosha && (
-            <Badge variant="secondary" data-testid={`badge-dosha-${id}`}>
-              {dosha}
-            </Badge>
-          )}
         </div>
       </CardHeader>
       <CardContent>
