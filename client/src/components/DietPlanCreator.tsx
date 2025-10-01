@@ -25,7 +25,7 @@ export default function DietPlanCreator({ onGenerate }: DietPlanCreatorProps) {
 
   const handleGenerate = () => {
     setIsGenerating(true);
-    console.log("Generating diet plan with:", { goals, restrictions });
+    console.log("Generating diet plan (prototype - not stored):", { goals, restrictions });
     
     setTimeout(() => {
       setGeneratedPlan({
@@ -93,7 +93,7 @@ export default function DietPlanCreator({ onGenerate }: DietPlanCreatorProps) {
 
           <Button
             onClick={handleGenerate}
-            disabled={isGenerating || !goals.trim()}
+            disabled={isGenerating}
             className="w-full gap-2"
             data-testid="button-generate-plan"
           >

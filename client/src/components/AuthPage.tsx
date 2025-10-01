@@ -21,14 +21,14 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login attempted with:", loginEmail);
-    // Existing users go directly to dashboard
+    // Prototype: Accept any input, existing users go directly to dashboard
     onLogin(loginEmail.includes("doctor") ? "practitioner" : "patient", false);
   };
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Signup attempted:", { signupName, signupEmail, signupRole });
-    // New users need to complete profile
+    // Prototype: Accept any input, new users need to complete profile
     onLogin(signupRole, true);
   };
 
@@ -63,12 +63,11 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
                     <Label htmlFor="login-email">Email</Label>
                     <Input
                       id="login-email"
-                      type="email"
+                      type="text"
                       placeholder="you@example.com"
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
                       data-testid="input-login-email"
-                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -79,7 +78,6 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                       data-testid="input-login-password"
-                      required
                     />
                   </div>
                 </CardContent>
@@ -109,19 +107,17 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
                       value={signupName}
                       onChange={(e) => setSignupName(e.target.value)}
                       data-testid="input-signup-name"
-                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="signup-email">Email</Label>
                     <Input
                       id="signup-email"
-                      type="email"
+                      type="text"
                       placeholder="you@example.com"
                       value={signupEmail}
                       onChange={(e) => setSignupEmail(e.target.value)}
                       data-testid="input-signup-email"
-                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -132,7 +128,6 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
                       value={signupPassword}
                       onChange={(e) => setSignupPassword(e.target.value)}
                       data-testid="input-signup-password"
-                      required
                     />
                   </div>
                   <div className="space-y-2">

@@ -26,7 +26,7 @@ export default function ProfileSetupForm({ onComplete }: ProfileSetupFormProps) 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Profile setup:", { age, weight, height, dosha, rasas, temperature });
+    console.log("Profile setup (prototype - not stored):", { age, weight, height, dosha, rasas, temperature });
     onComplete();
   };
 
@@ -44,36 +44,33 @@ export default function ProfileSetupForm({ onComplete }: ProfileSetupFormProps) 
                 <Label htmlFor="age">Age</Label>
                 <Input
                   id="age"
-                  type="number"
+                  type="text"
                   placeholder="30"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
                   data-testid="input-age"
-                  required
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="weight">Weight (kg)</Label>
                 <Input
                   id="weight"
-                  type="number"
+                  type="text"
                   placeholder="70"
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
                   data-testid="input-weight"
-                  required
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="height">Height (cm)</Label>
                 <Input
                   id="height"
-                  type="number"
+                  type="text"
                   placeholder="170"
                   value={height}
                   onChange={(e) => setHeight(e.target.value)}
                   data-testid="input-height"
-                  required
                 />
               </div>
             </div>

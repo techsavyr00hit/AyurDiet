@@ -14,7 +14,7 @@ export default function HabitsForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Habits submitted:", { calories, glucose, spo2, steps });
+    console.log("Habits submitted (prototype - not stored):", { calories, glucose, spo2, steps });
     toast({
       title: "Habits Logged",
       description: "Your daily health metrics have been recorded.",
@@ -38,7 +38,7 @@ export default function HabitsForm() {
               <Label htmlFor="calories">Calories (kcal)</Label>
               <Input
                 id="calories"
-                type="number"
+                type="text"
                 placeholder="1800"
                 value={calories}
                 onChange={(e) => setCalories(e.target.value)}
@@ -49,7 +49,7 @@ export default function HabitsForm() {
               <Label htmlFor="glucose">Glucose (mg/dL)</Label>
               <Input
                 id="glucose"
-                type="number"
+                type="text"
                 placeholder="95"
                 value={glucose}
                 onChange={(e) => setGlucose(e.target.value)}
@@ -60,7 +60,7 @@ export default function HabitsForm() {
               <Label htmlFor="spo2">SpO2 (%)</Label>
               <Input
                 id="spo2"
-                type="number"
+                type="text"
                 placeholder="98"
                 value={spo2}
                 onChange={(e) => setSpo2(e.target.value)}
@@ -71,7 +71,7 @@ export default function HabitsForm() {
               <Label htmlFor="steps">Step Count</Label>
               <Input
                 id="steps"
-                type="number"
+                type="text"
                 placeholder="8000"
                 value={steps}
                 onChange={(e) => setSteps(e.target.value)}
