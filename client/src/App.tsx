@@ -4,29 +4,35 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import LandingPage from "@/components/LandingPage";
 import AuthPage from "@/components/AuthPage";
 import ProfileSetupForm from "@/components/ProfileSetupForm";
 import PatientDashboard from "@/components/PatientDashboard";
 import PractitionerDashboard from "@/components/PractitionerDashboard";
 
-type AppState = "auth" | "profile-setup" | "patient-dashboard" | "practitioner-dashboard";
+type AppState = "landing" | "auth" | "profile-setup" | "patient-dashboard" | "practitioner-dashboard";
 type UserRole = "patient" | "practitioner" | null;
 
 function App() {
-  const [appState, setAppState] = useState<AppState>("auth");
+  const [appState, setAppState] = useState<AppState>("landing");
   const [userRole, setUserRole] = useState<UserRole>(null);
   const [userName, setUserName] = useState("User");
+  const [isNewUser, setIsNewUser] = useState(false);
 
-  const handleLogin = (role: UserRole) => {
+  const handleGetStarted = () => {
+    setAppState("auth");
+  };
+
+  const handleLogin = (role: UserRole, isNew: boolean = false) => {
     setUserRole(role);
-    // todo: remove mock functionality - In real app, check if profile is complete
-    const hasCompletedProfile = Math.random() > 0.5;
+    setIsNewUser(isNew);
     
-    if (hasCompletedProfile) {
+    // todo: remove mock functionality - Check if this is a new user who needs to complete profile
+    if (isNew) {
+      setAppState("profile-setup");
+    } else {
       setAppState(role === "patient" ? "patient-dashboard" : "practitioner-dashboard");
       setUserName(role === "patient" ? "Arjun Sharma" : "Anjali Verma");
-    } else {
-      setAppState("profile-setup");
     }
   };
 
@@ -41,15 +47,17 @@ function App() {
   };
 
   const handleLogout = () => {
-    setAppState("auth");
+    setAppState("landing");
     setUserRole(null);
     setUserName("User");
+    setIsNewUser(false);
   };
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
+          {appState === "landing" && <LandingPage onGetStarted={handleGetStarted} />}
           {appState === "auth" && <AuthPage onLogin={handleLogin} />}
           {appState === "profile-setup" && <ProfileSetupForm onComplete={handleProfileComplete} />}
           {appState === "patient-dashboard" && <PatientDashboard userName={userName} onLogout={handleLogout} />}

@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Leaf } from "lucide-react";
 
 type AuthPageProps = {
-  onLogin: (role: "patient" | "practitioner") => void;
+  onLogin: (role: "patient" | "practitioner", isNewUser?: boolean) => void;
 };
 
 export default function AuthPage({ onLogin }: AuthPageProps) {
@@ -21,13 +21,15 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login attempted with:", loginEmail);
-    onLogin(loginEmail.includes("doctor") ? "practitioner" : "patient");
+    // Existing users go directly to dashboard
+    onLogin(loginEmail.includes("doctor") ? "practitioner" : "patient", false);
   };
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Signup attempted:", { signupName, signupEmail, signupRole });
-    onLogin(signupRole);
+    // New users need to complete profile
+    onLogin(signupRole, true);
   };
 
   return (
