@@ -28,7 +28,8 @@ function App() {
     setIsNewUser(isNew);
     
     // todo: remove mock functionality - Check if this is a new user who needs to complete profile
-    if (isNew) {
+    // Only patients need to complete profile, practitioners go directly to dashboard
+    if (isNew && role === "patient") {
       setAppState("profile-setup");
     } else {
       setAppState(role === "patient" ? "patient-dashboard" : "practitioner-dashboard");
