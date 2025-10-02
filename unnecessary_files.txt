@@ -1,0 +1,25 @@
+Files Not Required for Running Web App in Local Browser:
+================================================================
+
+1. .replit
+   - Replit-specific configuration file
+
+2. replit.md
+   - Replit-specific project documentation
+
+3. design_guidelines.md
+   - Documentation file with design guidelines
+
+4. .local/state/replit/agent/progress_tracker.md
+   - Migration tracking file (Replit-specific)
+
+5. .gitignore
+   - Git version control configuration (useful for development but not required to run)
+
+Note: All other files in the project are required for the application to function properly in a local browser.
+
+To run locally, you only need:
+- Install Node.js (v20+)
+- Run: npm install
+- Run: npm run dev
+- Open: http://localhost:5000
