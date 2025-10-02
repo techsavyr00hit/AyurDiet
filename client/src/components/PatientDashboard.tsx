@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Activity, Droplets, Footprints, Flame, Leaf, Plus, History, Sparkles } from "lucide-react";
+import { Activity, Droplets, Footprints, Flame, Leaf, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./ThemeToggle";
 import MetricCard from "./MetricCard";
 import DietChartCard from "./DietChartCard";
 import HabitsForm from "./HabitsForm";
-import DietPlanCreator from "./DietPlanCreator";
 import {
   Dialog,
   DialogContent,
@@ -21,7 +19,6 @@ type PatientDashboardProps = {
 
 export default function PatientDashboard({ userName, onLogout }: PatientDashboardProps) {
   const [showHabitsDialog, setShowHabitsDialog] = useState(false);
-  const [showDietCreatorDialog, setShowDietCreatorDialog] = useState(false);
 
   // todo: remove mock functionality
   const mockCharts = [
@@ -43,12 +40,9 @@ export default function PatientDashboard({ userName, onLogout }: PatientDashboar
               <p className="text-xs text-muted-foreground">Welcome, {userName}</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <Button variant="outline" onClick={onLogout} data-testid="button-logout">
-              Logout
-            </Button>
-          </div>
+          <Button variant="outline" onClick={onLogout} data-testid="button-logout">
+            Logout
+          </Button>
         </div>
       </header>
 
@@ -67,16 +61,6 @@ export default function PatientDashboard({ userName, onLogout }: PatientDashboar
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold font-serif">Your Diet Charts</h2>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowDietCreatorDialog(true)}
-                className="gap-2"
-                data-testid="button-new-plan"
-              >
-                <Plus className="h-4 w-4" />
-                New Plan
-              </Button>
             </div>
             <div className="grid grid-cols-1 gap-4">
               {mockCharts.map((chart) => (
@@ -109,18 +93,6 @@ export default function PatientDashboard({ userName, onLogout }: PatientDashboar
               <Button
                 variant="outline"
                 className="h-auto p-6 justify-start gap-3 hover-elevate"
-                onClick={() => setShowDietCreatorDialog(true)}
-                data-testid="button-create-plan"
-              >
-                <Sparkles className="h-6 w-6 text-primary" />
-                <div className="text-left">
-                  <p className="font-semibold">AI Diet Plan</p>
-                  <p className="text-sm text-muted-foreground">Generate personalized recommendations</p>
-                </div>
-              </Button>
-              <Button
-                variant="outline"
-                className="h-auto p-6 justify-start gap-3 hover-elevate"
                 onClick={() => console.log("View history")}
                 data-testid="button-view-history"
               >
@@ -142,16 +114,6 @@ export default function PatientDashboard({ userName, onLogout }: PatientDashboar
             <DialogDescription>Record your health metrics for today</DialogDescription>
           </DialogHeader>
           <HabitsForm />
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={showDietCreatorDialog} onOpenChange={setShowDietCreatorDialog}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>Create Diet Plan</DialogTitle>
-            <DialogDescription>Generate a personalized Ayurvedic diet plan</DialogDescription>
-          </DialogHeader>
-          <DietPlanCreator />
         </DialogContent>
       </Dialog>
     </div>

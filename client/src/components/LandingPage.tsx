@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Leaf, Heart, Brain, TrendingUp, Users, Star, CheckCircle } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
 
 type LandingPageProps = {
   onGetStarted: () => void;
@@ -43,12 +42,9 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
             </div>
             <h1 className="text-xl font-bold font-serif">AyurDiet</h1>
           </div>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Button onClick={onGetStarted} data-testid="button-get-started-header">
-              Get Started
-            </Button>
-          </div>
+          <Button onClick={onGetStarted} data-testid="button-get-started-header">
+            Get Started
+          </Button>
         </div>
       </header>
 

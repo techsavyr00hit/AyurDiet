@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Leaf, Search, Users, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ThemeToggle } from "./ThemeToggle";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -60,12 +59,9 @@ export default function PractitionerDashboard({ userName, onLogout }: Practition
               <p className="text-xs text-muted-foreground">Dr. {userName}</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <Button variant="outline" onClick={onLogout} data-testid="button-logout">
-              Logout
-            </Button>
-          </div>
+          <Button variant="outline" onClick={onLogout} data-testid="button-logout">
+            Logout
+          </Button>
         </div>
       </header>
 
