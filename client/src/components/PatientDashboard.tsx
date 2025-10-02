@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Activity, Droplets, Footprints, Flame, Leaf, History } from "lucide-react";
+import { Activity, Droplets, Footprints, Flame, Leaf, History, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MetricCard from "./MetricCard";
 import DietChartCard from "./DietChartCard";
@@ -88,6 +88,18 @@ export default function PatientDashboard({ userName, onLogout }: PatientDashboar
                 <div className="text-left">
                   <p className="font-semibold">Log Daily Habits</p>
                   <p className="text-sm text-muted-foreground">Track calories, glucose, SpO2, steps</p>
+                </div>
+              </Button>
+              <Button
+                variant="outline"
+                className="h-auto p-6 justify-start gap-3 hover-elevate"
+                onClick={() => console.log("Scan food")}
+                data-testid="button-scan-food"
+              >
+                <Camera className="h-6 w-6 text-primary" />
+                <div className="text-left">
+                  <p className="font-semibold">Scan Food</p>
+                  <p className="text-sm text-muted-foreground">Identify food and get nutritional info</p>
                 </div>
               </Button>
               <Button
