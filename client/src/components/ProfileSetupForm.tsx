@@ -14,7 +14,6 @@ export default function ProfileSetupForm({ onComplete }: ProfileSetupFormProps) 
   const [age, setAge] = useState("");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
-  const [dosha, setDosha] = useState("vata");
   const [rasas, setRasas] = useState<string[]>([]);
   const [temperature, setTemperature] = useState("neutral");
 
@@ -26,7 +25,7 @@ export default function ProfileSetupForm({ onComplete }: ProfileSetupFormProps) 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Profile setup (prototype - not stored):", { age, weight, height, dosha, rasas, temperature });
+    console.log("Profile setup (prototype - not stored):", { age, weight, height, rasas, temperature });
     onComplete();
   };
 
@@ -73,24 +72,6 @@ export default function ProfileSetupForm({ onComplete }: ProfileSetupFormProps) 
                   data-testid="input-height"
                 />
               </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label>Dominant Dosha</Label>
-              <RadioGroup value={dosha} onValueChange={setDosha}>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="vata" id="vata" data-testid="radio-dosha-vata" />
-                  <Label htmlFor="vata" className="font-normal cursor-pointer">Vata (Air & Space)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="pitta" id="pitta" data-testid="radio-dosha-pitta" />
-                  <Label htmlFor="pitta" className="font-normal cursor-pointer">Pitta (Fire & Water)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="kapha" id="kapha" data-testid="radio-dosha-kapha" />
-                  <Label htmlFor="kapha" className="font-normal cursor-pointer">Kapha (Earth & Water)</Label>
-                </div>
-              </RadioGroup>
             </div>
 
             <div className="space-y-2">
