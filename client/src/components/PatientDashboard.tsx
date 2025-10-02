@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Activity, Droplets, Footprints, Flame, Leaf, Plus, History, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./ThemeToggle";
 import MetricCard from "./MetricCard";
 import DietChartCard from "./DietChartCard";
 import HabitsForm from "./HabitsForm";
@@ -43,12 +42,9 @@ export default function PatientDashboard({ userName, onLogout }: PatientDashboar
               <p className="text-xs text-muted-foreground">Welcome, {userName}</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <Button variant="outline" onClick={onLogout} data-testid="button-logout">
-              Logout
-            </Button>
-          </div>
+          <Button variant="outline" onClick={onLogout} data-testid="button-logout">
+            Logout
+          </Button>
         </div>
       </header>
 
